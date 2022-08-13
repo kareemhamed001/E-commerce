@@ -26,7 +26,7 @@ class SliderEditFormRequest extends FormRequest
         return [
             'title'=>['required','string','max:200'],
             'description'=>['required','string','max:200'],
-            'image'=>['nullable','image','mimes:png,jpg,jpeg'],
+            'image'=>['nullable','image'],
             'status'=>['nullable'],
         ];
     }

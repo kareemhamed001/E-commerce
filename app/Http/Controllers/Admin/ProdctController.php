@@ -36,8 +36,8 @@ class ProdctController extends Controller
 
         $validatedData = $request->validated();
 //        dd($validatedData['category'].','.$validatedData['brand']);
-        $category_id = category::findOrFail($validatedData['category']);
-        $brand_id = category::findOrFail($validatedData['brand']);
+        $category_id = category::find($validatedData['category']);
+        $brand_id = category::find($validatedData['brand']);
 
         $product = product::create([
             'category_id' => $validatedData['category'],
@@ -94,7 +94,7 @@ class ProdctController extends Controller
         $categories = category::all();
         $brands = brand::all();
 
-        $product=product::findOrFail($product);
+        $product=product::find($product);
         $images = $product->productImages();
         $productColors = $product->productColors()->pluck('color_id')->toArray();
         $colors = color::whereNotIn('id',$productColors)->get();
@@ -105,7 +105,7 @@ class ProdctController extends Controller
     public function update(ProductsFormRequest $request, $product_id)
     {
         $validatedData = $request->validated();
-        $product = category::findOrFail($validatedData['category'])->products()->where('id', $product_id)->first();
+        $product = category::find($validatedData['category'])->products()->where('id', $product_id)->first();
 
 
         if ($product) {
@@ -165,7 +165,7 @@ class ProdctController extends Controller
     }
 
     function updataColorQuantity(Request $request,$color_id){
-        $productColorData=product::findOrFail($request->product_id)->productColor()->where('id',$color_id)->first();
+        $productColorData=product::find($request->product_id)->productColor()->where('id',$color_id)->first();
         $productColorData->update([
             'quantity'=>$request->quantity,
         ]);
@@ -174,7 +174,7 @@ class ProdctController extends Controller
 
     public function destroyImage(int $product_image_id)
     {
-        $productImage = productImage::findOrFail($product_image_id);
+        $productImage = productImage::find($product_image_id);
         if (File::exists($productImage->image)) {
             File::delete($productImage->image);
         }

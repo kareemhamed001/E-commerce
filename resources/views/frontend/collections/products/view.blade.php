@@ -12,7 +12,6 @@
 
 @section('content')
     <div>
-
         <livewire:front-end.product.view :product="$product" :category="$category" />
     </div>
 

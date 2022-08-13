@@ -16,10 +16,6 @@ class Index extends Component
 
     public $product_quantity=1;
 
-    function test(){
-        dd('test');
-    }
-
     function toFavourite($product_id,$user_id){
         $product=product::find($product_id);
         $user=User::find($user_id);
@@ -38,7 +34,6 @@ class Index extends Component
                 $this->emit('refreshNavBar');
             }
         }
-
     }
 
     function toCart($product_id,$user_id)
@@ -56,6 +51,8 @@ class Index extends Component
                         'user_id'=>$user_id,
                         'product_id'=>$product_id,
                         'quantity'=>$this->product_quantity,
+                        'color_id'=>$product->productColors()->first()->id,
+                        'price_per_one'=>$product->selling_price,
                     ]);
                     $this->emit('refreshNavBar');
                     $this->dispatchBrowserEvent('done-modal');

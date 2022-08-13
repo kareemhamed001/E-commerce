@@ -23,6 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home',\App\Http\Livewire\FrontEnd\Index::class)->middleware('auth');
+Route::get('cart',\App\Http\Livewire\FrontEnd\Cart\Index::class)->middleware('auth');
 Route::get('/collections', [\App\Http\Controllers\Frontend\FrontendController::class,'categories'])->middleware('auth');
 Route::get('collections/{category_slug}', [\App\Http\Controllers\Frontend\FrontendController::class,'products'])->middleware('auth');
 Route::get('collections/{category_slug}/{product_slug}', [\App\Http\Controllers\Frontend\FrontendController::class,'productView'])->middleware('auth');
