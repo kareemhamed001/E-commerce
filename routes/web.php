@@ -47,7 +47,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function (){
     Route::get('products', \App\Http\Livewire\Admin\Product\Index::class);
     Route::controller(ProdctController::class)->group(function (){
         Route::get('product/create', 'create');
-        Route::post('products', 'store');
+        Route::put('product/create', 'store');
         Route::get('product/{product}/edit', 'edit');
         Route::put('product/{product}', 'update');
         Route::post('product-color/{color_id}', 'updataColorQuantity');

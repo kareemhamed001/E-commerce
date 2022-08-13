@@ -26,13 +26,13 @@ class ProductsFormRequest extends FormRequest
         return [
 
             'category'=>[
-                'required'
+                'required','integer'
             ],'name'=>[
                 'required','string'
             ],'slug'=>[
                 'required','string'
             ],'brand'=>[
-                'required'
+                'required','integer'
             ],'image[]'=>[
                 'nullable',
                 'image' ,

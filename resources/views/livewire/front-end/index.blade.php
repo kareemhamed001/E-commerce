@@ -2,7 +2,7 @@
     @forelse($categories as $category)
         @if($category->products->count()>0)
 
-            <section class=" container py-3   ">
+            <section class=" container py-3   product_section" >
                 <div class=" position-relative">
                     <h3 class="section-heading text-uppercase">{{$category->name}}</h3>
                     <h3 class="section-subheading text-muted"></h3>
@@ -11,7 +11,7 @@
                 <div class="row overflow-auto flex-nowrap">
 
                     @forelse($category->products as $product)
-                        <div class="col-sm-3 ">
+                        <div class="col-sm-4 col-md-3 col-lg-2 ">
                             <div class="product-card position-relative">
                                 <a href="{{url('collections/'.$product->category->slug.'/'.$product->slug)}}">
 

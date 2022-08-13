@@ -2,11 +2,11 @@
 <div class="mb-3">
     <label>Category</label>
     <select class="form-control" name="category"  wire:change="getBrands(event.target.value)">
-        <option >--Select Category--</option>
+        <option>--Select Category--</option>
         @forelse($categories as $category)
             <option value="{{$category->id}}" >{{$category->name}}</option>
         @empty
-            <option >-- No categories --</option>
+            <option>-- No categories --</option>
         @endforelse
     </select>
 </div>

@@ -32,41 +32,44 @@
 
                     <div class="card-body">
 
-                        <form method="post" action="{{url('admin/products')}}" enctype="multipart/form-data">
-                            @csrf
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
-                                            data-bs-target="#home-tab-pane" type="button" role="tab"
-                                            aria-controls="home-tab-pane" aria-selected="true">Home
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="tags-tab" data-bs-toggle="tab"
-                                            data-bs-target="#tags-tab-pane" type="button" role="tab"
-                                            aria-controls="tags-tab-pane" aria-selected="false">SEO Tags
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="details-tab" data-bs-toggle="tab"
-                                            data-bs-target="#details-tab-pane" type="button" role="tab"
-                                            aria-controls="details-tab-pane" aria-selected="false">Details
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="image-tab" data-bs-toggle="tab"
-                                            data-bs-target="#image-tab-pane" type="button" role="tab"
-                                            aria-controls="image-tab-pane" aria-selected="false">Image
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="image-tab" data-bs-toggle="tab"
-                                            data-bs-target="#color-tab-pane" type="button" role="tab"
-                                            aria-controls="color-tab-pane" aria-selected="false">Colors
-                                    </button>
-                                </li>
 
-                            </ul>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#home-tab-pane" type="button" role="tab"
+                                        aria-controls="home-tab-pane" aria-selected="true">Home
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tags-tab" data-bs-toggle="tab"
+                                        data-bs-target="#tags-tab-pane" type="button" role="tab"
+                                        aria-controls="tags-tab-pane" aria-selected="false">SEO Tags
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="details-tab" data-bs-toggle="tab"
+                                        data-bs-target="#details-tab-pane" type="button" role="tab"
+                                        aria-controls="details-tab-pane" aria-selected="false">Details
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="image-tab" data-bs-toggle="tab"
+                                        data-bs-target="#image-tab-pane" type="button" role="tab"
+                                        aria-controls="image-tab-pane" aria-selected="false">Image
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="image-tab" data-bs-toggle="tab"
+                                        data-bs-target="#color-tab-pane" type="button" role="tab"
+                                        aria-controls="color-tab-pane" aria-selected="false">Colors
+                                </button>
+                            </li>
+
+                        </ul>
+
+                        <form method="post" action="{{url('admin/product/create')}}" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
 
                             <div class="tab-content py-2" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
@@ -82,8 +85,6 @@
                                         <label>Product Slug</label>
                                         <input type="text" name="slug" class="form-control" value="{{ old('slug') }}">
                                     </div>
-
-
 
                                     <div class="mb-3">
                                         <label>Small Description</label>
@@ -185,7 +186,7 @@
                                 </div>
 
                             </div>
-                            <button class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </form>
                     </div>
                 </div>

@@ -33,7 +33,9 @@ class ProdctController extends Controller
 
     public function store(ProductsFormRequest $request)
     {
+
         $validatedData = $request->validated();
+//        dd($validatedData['category'].','.$validatedData['brand']);
         $category_id = category::findOrFail($validatedData['category']);
         $brand_id = category::findOrFail($validatedData['brand']);
 
