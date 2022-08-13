@@ -22,16 +22,15 @@
     <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
 {{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">--}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
+
 
     @livewireStyles
 </head>
 <body class="position-relative">
-    <div id="app" class="vw-100 ">
+    <div id="app" class="vw-100 position-relative ">
 
+        <livewire:layouts.inc.front-end.navbar>
 
-
-        @include('layouts.inc.frontend.navbar')
             @yield('content')
 
     </div>
@@ -49,16 +48,8 @@
     <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}" ></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" ></script>
     <script src="{{ asset('assets/js/all.min.js') }}" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
-    <script>
-        var splide = new Splide('.splide', {
-            type: 'loop',
-            perPage: 4,
-            rewind: true,
-        });
 
-        splide.mount();
-    </script>
+
     @livewireScripts
 @stack('script')
 </body>

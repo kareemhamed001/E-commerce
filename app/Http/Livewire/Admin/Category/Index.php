@@ -30,6 +30,7 @@ class Index extends Component
             File::cleanDirectory('uploads/category');
             $this->deleteAll=false;
             session()->flash('message','All Categories Deleted');
+            $this->emit('refreshIndexPage');
             $this->dispatchBrowserEvent('close-modal');
 
         }else{
@@ -40,6 +41,7 @@ class Index extends Component
             }
             $category->delete();
             session()->flash('message','category Deleted');
+            $this->emit('refreshIndexPage');
             $this->dispatchBrowserEvent('close-modal');
             $this->category_id='';
         }

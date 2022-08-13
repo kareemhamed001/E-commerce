@@ -27,4 +27,10 @@ class product extends Model
     {
         return $this->belongsTo(category::class,'category_id','id');
     }
+    public function carts(){
+        return $this->belongsTo(shoppingCart::class,'product_id','id');
+    }
+    public function favourites(){
+        return $this->belongsTo(favourite::class,'product_id','id');
+    }
 }

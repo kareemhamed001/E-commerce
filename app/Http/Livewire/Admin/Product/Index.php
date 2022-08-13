@@ -23,6 +23,7 @@ class Index extends Component
 
     function deleteAll(){
         $this->delete_All=true;
+        $this->emit('refreshIndexPage');
     }
 
     function destroyProduct(){
@@ -31,13 +32,16 @@ class Index extends Component
             product::truncate();
             $this->deleteAll=false;
             session()->flash('message','All products Deleted');
+            $this->emit('refreshIndexPage');
             $this->dispatchBrowserEvent('close-modal');
 
         }else{
             $product= product::find($this->product_id);
             $product->delete();
             session()->flash('message','product Deleted');
+            $this->emit('refreshIndexPage');
             $this->dispatchBrowserEvent('close-modal');
+
             $this->product_id='';
         }
     }

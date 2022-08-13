@@ -26,6 +26,9 @@ class User extends Authenticatable
     function favourites(){
         return $this->hasMany(favourite::class,'user_id','id');
     }
+    function carts(){
+        return $this->hasMany(shoppingCart::class,'user_id','id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

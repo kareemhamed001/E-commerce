@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', [\App\Http\Controllers\Frontend\FrontendController::class,'index'])->middleware('auth');
+Route::get('/home',\App\Http\Livewire\FrontEnd\Index::class)->middleware('auth');
 Route::get('/collections', [\App\Http\Controllers\Frontend\FrontendController::class,'categories'])->middleware('auth');
 Route::get('collections/{category_slug}', [\App\Http\Controllers\Frontend\FrontendController::class,'products'])->middleware('auth');
 Route::get('collections/{category_slug}/{product_slug}', [\App\Http\Controllers\Frontend\FrontendController::class,'productView'])->middleware('auth');

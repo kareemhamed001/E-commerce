@@ -11,7 +11,7 @@ class favourite extends Model
     protected $table="favourites";
     protected $guarded=[];
 
-    function products(){
+    function product(){
         return $this->belongsTo(product::class,'product_id','id');
     }
     function users(){
