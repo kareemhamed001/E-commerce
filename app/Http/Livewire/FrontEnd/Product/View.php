@@ -54,6 +54,8 @@ class View extends Component
     }
 
 
+
+
     function toFavourite($product_id,$user_id){
 
 
@@ -84,7 +86,7 @@ class View extends Component
         $user=User::find($user_id);
         $item=shoppingCart::where('product_id',$product_id)->where('user_id',$user_id)->first();
         if ($item){
-            if ($product->quantity>=$this->product_quantity){
+            if ($product->quantity>=$this->product_quantity &&$this->product_quantity>0){
                 $item->update([
                     'quantity'=> intval($this->product_quantity),
                 ]);
@@ -94,7 +96,7 @@ class View extends Component
 
         }else{
             if ($product && $user){
-                if ($product->quantity>=$this->product_quantity){
+                if ($product->quantity>=$this->product_quantity &&$this->product_quantity>0){
                     $favItem=shoppingCart::create([
                         'user_id'=>$user_id,
                         'product_id'=>$product_id,

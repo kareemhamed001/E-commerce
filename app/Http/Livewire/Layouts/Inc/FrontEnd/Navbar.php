@@ -11,6 +11,7 @@ use Livewire\Component;
 class Navbar extends Component
 {
     protected $listeners=['refreshNavBar'=>'$refresh'];
+    public $searchValue;
 
 
 //    function toFavourite($product_id,$user_id){
@@ -37,6 +38,18 @@ class Navbar extends Component
     function closeFav(){
         $this->dispatchBrowserEvent('close-favBar');
     }
+
+    function search(){
+
+        $products=product::where('name', 'like', '%' . $this->searchValue . '%')->get();
+//        dd($products);
+        if ($products){
+            return view('frontend.search.Index',compact('products'));
+        }
+
+
+    }
+
 
 
     public function render()

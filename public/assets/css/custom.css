@@ -2,13 +2,12 @@
     border-bottom: 1px solid #ccc;
 }
 .main-navbar .top-navbar{
-    background-color: #f02846;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    background: linear-gradient(#005100, #007f00);
+
 }
-.main-navbar .top-navbar .brand-name{
-    color: #fff;
-}
+/*.main-navbar .top-navbar .brand-name{*/
+/*    color: #fff;*/
+/*}*/
 .main-navbar .top-navbar .nav-link{
     color: #fff;
     font-size: 16px;
@@ -31,7 +30,7 @@
 }
 .main-navbar .navbar{
     padding: 0px;
-    background-color: #ddd;
+    background-color: #ededed;
 }
 .main-navbar .navbar .nav-item .nav-link{
     padding: 8px 20px;

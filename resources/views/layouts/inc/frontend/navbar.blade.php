@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                    <a class="nav-link" href="{{url('home')}}"><h5 class="brand-name">E-Commerce</h5></a>
+                    <a class="nav-link" href="{{url('home')}}"><h5 class="brand-name"><img src="{{asset('assets/images/298170216_3144184582466850_2113745067794617083_n.jpg')}}" alt=""></h5></a>
                 </div>
                 <div class="col-md-5 my-auto">
                     <form role="search">
@@ -61,7 +61,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand d-block d-sm-block d-md-none d-lg-none" href="#">
-                E-commerce
+                <img src="{{asset('assets/images/298170216_3144184582466850_2113745067794617083_n.jpg')}}" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

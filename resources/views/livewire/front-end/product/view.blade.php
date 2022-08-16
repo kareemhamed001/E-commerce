@@ -56,12 +56,10 @@
 
                             @if($product->productColors->count()>0)
                                 @if($product->productColors)
-
                                     @foreach($product->productColors as $key => $color)
                                         <input type="radio" value="{{$color->id}}" id="radio{{$key}}"  @if($key==0) checked @endif wire:model="color_selected">
 {{--                                        <input type="radio"  value="{{$color->id}}"    @if($key==0) checked @endif>--}}
                                         <label for="radio{{$key}}">{{$color->color->name}}</label>
-
                                     @endforeach
 
                                 @endif
@@ -127,6 +125,94 @@
                     </div>
                 </div>
             </div>
+            <div class="row px-5 my-2 bg-light">
+                <h3 class="my-2">Related Products</h3>
+
+                @forelse($product->category->products as $relatedProduct)
+
+                    @if($product->category->products->count()==1)
+                        <div class="col-12">
+                            <h5>No Related Products</h5>
+                        </div>
+
+                    @else
+                        @if($relatedProduct->trending=='0' && $relatedProduct->id!=$product->id )
+                            <div class="col-5 col-sm-5 col-md-4 col-lg-4 col-xxl-3 ">
+                                <div class="product-card position-relative rounded-1">
+                                    <a href="{{url('collections/'.$relatedProduct->category->slug.'/'.$relatedProduct->slug)}}">
+
+                                        <div class="product-card-img">
+                                            @if($relatedProduct->quantity>0)
+                                                <label class="stock bg-success">In Stock</label>
+                                            @else
+                                                <label class="stock bg-danger">Out of Stock</label>
+                                            @endif
+                                            @if($relatedProduct->productImages->count()>0)
+                                                <img src="{{asset($relatedProduct->productImages[0]->image)}}"
+                                                     alt="{{$relatedProduct->name}}">
+
+                                            @endif
+                                        </div>
+                                        <div class="product-card-body">
+                                            <p class="product-brand">{{$relatedProduct->brand->name}}</p>
+                                            <h5 class="product-name">
+                                        <span>
+                                            {{$relatedProduct->name}}
+                                        </span>
+                                            </h5>
+                                            <div>
+                                                <span class="selling-price">${{$relatedProduct->selling_price}}</span>
+                                                @if($relatedProduct->selling_price!=$relatedProduct->original_price)
+                                                    <span class="original-price">${{$relatedProduct->original_price}}</span>
+                                                @endif
+
+                                            </div>
+                                            <div class="mt-2 ">
+                                                    <?php $addedTocart = false ?>
+                                                @forelse(\Illuminate\Support\Facades\Auth::user()->carts as $item)
+                                                    @if($relatedProduct->id ==$item->product_id)
+                                                            <?php $addedTocart = true ?>
+                                                    @endif
+
+                                                @empty
+                                                @endforelse
+                                                @if($addedTocart)
+                                                    <a wire:click.prevent="toCart({{$relatedProduct->id}},{{\Illuminate\Support\Facades\Auth::user()->id}})"
+                                                       class="btn btn1 "><i class="fa fa-check"></i></a>
+                                                @else
+                                                    <a wire:click.prevent="toCart({{$relatedProduct->id}},{{\Illuminate\Support\Facades\Auth::user()->id}})"
+                                                       class="btn btn1 ">Add To Cart</a>
+                                                @endif
+
+
+
+                                                    <?php $exists = false ?>
+                                                @forelse(\Illuminate\Support\Facades\Auth::user()->favourites as $item)
+                                                    @if($relatedProduct->id ==$item->product_id)
+                                                            <?php $exists = true ?>
+                                                    @endif
+
+                                                @empty
+                                                @endforelse
+                                                <a  wire:click.prevent="toFavourite({{$relatedProduct->id}},{{\Illuminate\Support\Facades\Auth::user()->id}})"
+                                                    class="btn btn1 "> <i
+                                                        class="fa fa-heart @if($exists) text-danger @endif "></i> </a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
+
+
+                @empty
+                    <div class="col-12">
+                        No Related Products
+                    </div>
+                @endforelse
+            </div>
+
         </div>
     </div>
 </div>

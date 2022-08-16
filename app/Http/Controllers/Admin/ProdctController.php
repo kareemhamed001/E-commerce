@@ -156,6 +156,7 @@ class ProdctController extends Controller
                 }
             }
 
+
         } else {
             return redirect('admin/products')->with('message', 'No Such Product Id Found');
         }

@@ -4,15 +4,23 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\category;
+use App\Models\product;
 use App\Models\slider;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
+
     function index(){
         $sliders=slider::where('status','0')->get();
         $categories=category::where('status','0')->limit(10)->get();
         return view('frontend.index',compact('sliders','categories'));
+    }
+
+    function search(Request $request){
+//        dd($request->searchFor);
+        $products=product::where('name', 'like', '%' . $request->searchFor . '%')->get();
+        return view('frontend.search.Index',compact('products'));
     }
 
     function categories(){
